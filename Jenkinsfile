@@ -26,9 +26,9 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 sh """
-                  docker build -t $API_IMAGE:${API_IMAGE_TAG} api/
-                  docker build -t $WORKER_IMAGE:${WORKER_IMAGE_TAG} worker/
-                  docker build -t $FRONTEND_IMAGE:${FRONTEND_IMAGE_TAG} frontend/
+                    docker build -t $IMAGE_REPO:api-${API_IMAGE_TAG} api-service/
+                    docker build -t $IMAGE_REPO:worker-${WORKER_IMAGE_TAG} worker-service/
+                    docker build -t $IMAGE_REPO:frontend-${FRONTEND_IMAGE_TAG} frontend-service/
                 """
             }
         }
