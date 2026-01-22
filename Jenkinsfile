@@ -18,16 +18,17 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage('Clean Workspace & Checkout') {
            steps {
+               deleteDir()
                checkout([$class: 'GitSCM',
                    branches: [[name: '*/main']],
                    userRemoteConfigs: [[
                        url: 'https://github.com/dhakallokesh/micro-service.git'
-            ]]
-        ])
-    }
-}
+                   ]]
+               ])
+           }
+        }
 
         stage('Build Docker Images') {
             steps {
