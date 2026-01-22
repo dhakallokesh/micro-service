@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'API_IMAGE_TAG', defaultValue: "${BUILD_NUMBER}", description: 'API image tag')
-        string(name: 'WORKER_IMAGE_TAG', defaultValue: "${BUILD_NUMBER}", description: 'Worker image tag')
-        string(name: 'FRONTEND_IMAGE_TAG', defaultValue: "${BUILD_NUMBER}", description: 'Frontend image tag')
+        string(name: 'API_IMAGE_TAG', defaultValue: "latest", description: 'API image tag')
+        string(name: 'WORKER_IMAGE_TAG', defaultValue: "latest", description: 'Worker image tag')
+        string(name: 'FRONTEND_IMAGE_TAG', defaultValue: "latest", description: 'Frontend image tag')
         string(name: 'MYSQL_IMAGE_TAG', defaultValue: "8.0", description: 'MySQL image tag')
         string(name: 'REDIS_IMAGE_TAG', defaultValue: "7.2", description: 'Redis image tag')
     }
