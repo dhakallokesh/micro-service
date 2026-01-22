@@ -15,7 +15,7 @@ metadata:
   name: worker-secret
 type: Opaque
 data:
-  DB_PASS: YWRtaW4=   # base64("admin")
+  DB_PASS: YWRtaW4=
 
 ---
 apiVersion: apps/v1
@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: worker
-        image: micro-service-worker-service:latest
+        image: lokesshhdocker/micro-services:api
         envFrom:
         - configMapRef:
             name: worker-config

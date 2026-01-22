@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: micro-service-frontend-service:latest
+        image: lokesshhdocker/micro-services:api
         ports:
         - containerPort: 80
 ---
