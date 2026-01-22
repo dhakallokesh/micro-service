@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: lokesshhdocker/micro-services:api
+        image: lokesshhdocker/micro-services:frontend-FRONTEND_IMAGE_TAG
         ports:
         - containerPort: 80
 ---

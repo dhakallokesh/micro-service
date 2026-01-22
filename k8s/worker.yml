@@ -34,7 +34,7 @@ spec:
     spec:
       containers:
       - name: worker
-        image: lokesshhdocker/micro-services:api
+        image: lokesshhdocker/micro-services:worker-WORKER_IMAGE_TAG
         envFrom:
         - configMapRef:
             name: worker-config
