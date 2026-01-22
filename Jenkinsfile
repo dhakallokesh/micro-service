@@ -19,10 +19,15 @@ pipeline {
     stages {
 
         stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+           steps {
+               checkout([$class: 'GitSCM',
+                   branches: [[name: '*/main']],
+                   userRemoteConfigs: [[
+                       url: 'https://github.com/dhakallokesh/micro-service.git'
+            ]]
+        ])
+    }
+}
 
         stage('Build Docker Images') {
             steps {
