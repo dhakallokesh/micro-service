@@ -13,6 +13,7 @@ pipeline {
         API_IMAGE = "lokeshdhakal/api"
         WORKER_IMAGE = "lokeshdhakal/worker"
         FRONTEND_IMAGE = "lokeshdhakal/frontend"
+        IMAGE_REPO = "lokeshdhakal"
     }
 
     stages {
