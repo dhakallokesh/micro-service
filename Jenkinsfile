@@ -5,15 +5,13 @@ pipeline {
         string(name: 'API_IMAGE_TAG', defaultValue: "latest", description: 'API image tag')
         string(name: 'WORKER_IMAGE_TAG', defaultValue: "latest", description: 'Worker image tag')
         string(name: 'FRONTEND_IMAGE_TAG', defaultValue: "latest", description: 'Frontend image tag')
-        string(name: 'MYSQL_IMAGE_TAG', defaultValue: "8.0", description: 'MySQL image tag')
-        string(name: 'REDIS_IMAGE_TAG', defaultValue: "7.2", description: 'Redis image tag')
     }
 
     environment {
-        API_IMAGE = "lokeshdhakal/api"
-        WORKER_IMAGE = "lokeshdhakal/worker"
-        FRONTEND_IMAGE = "lokeshdhakal/frontend"
-        IMAGE_REPO = "lokeshdhakal"
+        API_IMAGE = "lokesshhdocker/micro-services:api"
+        WORKER_IMAGE = "lokesshhdocker/micro-services:worker"
+        FRONTEND_IMAGE = "lokesshhdocker/micro-services:frontend"
+        IMAGE_REPO = "lokesshhdocker/micro-services"
     }
 
     stages {
@@ -69,8 +67,6 @@ pipeline {
                   sed -i "s|API_IMAGE_TAG|${API_IMAGE_TAG}|g" k8s/api.yml
                   sed -i "s|WORKER_IMAGE_TAG|${WORKER_IMAGE_TAG}|g" k8s/worker.yml
                   sed -i "s|FRONTEND_IMAGE_TAG|${FRONTEND_IMAGE_TAG}|g" k8s/frontend.yml
-                  sed -i "s|MYSQL_IMAGE_TAG|${MYSQL_IMAGE_TAG}|g" k8s/db.yml
-                  sed -i "s|REDIS_IMAGE_TAG|${REDIS_IMAGE_TAG}|g" k8s/redis.yml
                 """
             }
         }
@@ -81,8 +77,6 @@ pipeline {
                     sh """
                       export KUBECONFIG=$KUBECONFIG
 
-                      kubectl apply -f k8s/db.yml
-                      kubectl apply -f k8s/redis.yml
                       kubectl apply -f k8s/api.yml
                       kubectl apply -f k8s/worker.yml
                       kubectl apply -f k8s/frontend.yml
