@@ -1,50 +1,49 @@
-version: "3.8"
-
 services:
   api-service:
     build: ./api-service
     ports:
-      - "3003:3003"
+      - "${API_PORT}:3003"
     environment:
-      - DB_HOST=db
-      - DB_USER=user
-      - DB_PASS=pass
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
     depends_on:
       - db
+      - redis
 
   worker-service:
     build: ./worker-service
     environment:
-      - DB_HOST=db
-      - DB_USER=user
-      - DB_PASS=pass
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
     depends_on:
       - db
+      - redis
 
   frontend-service:
     build: ./frontend-service
     ports:
-      - "8080:80"
+      - "${FRONTEND_PORT}:80"
     depends_on:
       - api-service
 
   db:
-    image: mysql:8.0
-    environment:
-      MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: appdb
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: admin
+    image: mysql:${MYSQL_VERSION}
     ports:
-      - "3306:3306"
+      - "${MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
 
   redis:
-    image: redis:7-alpine
+    image: redis:${REDIS_VERSION}
     ports:
-      - "6379:6379"
+      - "${REDIS_PORT}:6379"
 
 volumes:
   db_data:
-
