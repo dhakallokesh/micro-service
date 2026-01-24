@@ -120,7 +120,8 @@ iv.Configure Pipeline to Use Repo Jenkinsfile
 - Script Path → Jenkinsfile
 - Save the job.
 
-  v. Run the Pipeline
+
+v. Run the Pipeline
 - Click Build Now to execute the pipeline.
 - Jenkins will automatically:
 - Checkout your repository
