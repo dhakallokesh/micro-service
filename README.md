@@ -3,16 +3,15 @@ Microservices Project Deployment Guide
 This repository demonstrates a complete end-to-end microservices deployment workflow, starting from local development to Kubernetes deployment and automated CI/CD.
 
 
-
 Architecture Components
 
-Frontend: React application served via Nginx
-API Service: Node.js backend handling client requests
-Worker Service: Python service for background processing
-Database: MySQL for persistent data storage
-Cache / Messaging: Redis for fast access and task coordination
-Orchestration: Kubernetes (K3s)
-CI/CD: Jenkins pipeline
+-Frontend: React application served via Nginx
+-API Service: Node.js backend handling client requests
+-Worker Service: Python service for background processing
+-Database: MySQL for persistent data storage
+-Cache / Messaging: Redis for fast access and task coordination
+-Orchestration: Kubernetes (K3s)
+-CI/CD: Jenkins pipeline
 
 
 Step 1: Docker & Docker Compose
@@ -27,12 +26,10 @@ What this step achieves:
 -Uses persistent storage for the database
 - Allows developers to run the entire system with a single command
 
-This step ensures the application works correctly before moving to Kubernetes.
+
 
 Step 2: K3s Deployment
-
 In the second step, the application is deployed to a K3s Kubernetes cluster.
-
 Key highlights:
 
 -Lightweight Kubernetes (K3s) suitable for learning and edge environments
